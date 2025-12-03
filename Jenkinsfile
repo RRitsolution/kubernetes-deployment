@@ -41,9 +41,26 @@ pipeline{
           helm repo update
 
           '''
-
+        }
+      }
+    }
           
+   stage(''){
+
+     steps{
+
+       script{
+          sh '''
+          kubectl create namespace monitoring
+          helm install prometheus prometheus-community/kube-prometheus-stack --namespace monitoring
+          kubectl get pods -n monitoring
+          kubectl port-forward -n monitoring svc/prometheus-grafana 3000:80
+          '''
   }
 }
-           
+   
+
+        }
       
+  }
+}
