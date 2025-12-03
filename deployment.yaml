@@ -1,0 +1,30 @@
+kind: Deployment
+apiVersion: apps/v1
+metadata:
+    name: testdeployment
+    labels:
+       Cloud: AWS
+spec:
+  replicas: 10
+  selector:
+     matchLabels:
+       Cloud: AWS
+  template:
+    metadata:
+       labels:
+           Cloud: AWS
+    spec:
+      containers:
+        - name: depcontainer
+          image: httpd
+          ports:
+           - containerPort: 80
+  
+        # RESOURCE LIMITS
+          resources:
+            requests:
+              cpu: "200m"
+              memory: "256Mi"
+            limits:
+              cpu: "200m"
+              memory: "256Mi" 
