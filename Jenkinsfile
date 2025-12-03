@@ -9,7 +9,7 @@ pipeline{
 
       steps{
 
-      git branch: 'main', url: https://github.com/RRitsolution/kubernetes-deployment.git'
+      git branch: 'main', url: 'https://github.com/RRitsolution/kubernetes-deployment.git'
 
       }
     }
